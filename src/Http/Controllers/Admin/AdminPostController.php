@@ -24,7 +24,8 @@ class AdminPostController extends Controller
         if(Auth::user()->can('access.all.posts')){
 
         }
-        $posts = Post::paginate(2);
+        //$posts = Post::paginate(2);
+        $posts = Post::all();
         return view('aggregator::portal.admin.blog.posts.index', compact('posts'));
     }
     public function managePosts()
@@ -61,20 +62,35 @@ class AdminPostController extends Controller
         if(Auth::user()->can('store.posts')){
 
         }
+        //add validation
         $user = Auth::user();
-
-        $input = $request->all();
-        if($file = $request->file('photo_id'))
-        {
-          $name = time() . $file->getClientOriginalName();
-          $file->move('images', $name);
-
-          $photo = Photo::create(['file'=> $name]);
-
-          $input['photo_id'] = $photo->id;
-          $input['slug'] = str_slug($request->input('title')) .'-'.time();
+        if($request->file('featured_image_id')){
+            $input = $request->all();
+           // return 'there is a file';
+            $file = $request->file('featured_image_id');
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=> $name]);
+            $input['featured_image_id'] = $photo->id;
         }
-        $user->posts()->create($input);
+
+        $postData = [
+            'user_id' => Auth::user()->id,
+            'category_id' => $request->input('category_id'),
+            'tag_id' => $request->input('tag_id'),
+            'featured_image_id' => $input['featured_image_id'],
+            'title' => $request->input('title'),
+            'slug' => str_slug($request->input('title')) .'-'.time(),
+            'summary' => $request->input('summary'),
+            'body' => $request->input('body'),
+            'post_status' => $request->input('post_status'),
+        ];
+        Post::create($postData);
+
+      //  return $postData;
+
+
+       // $user->posts()->create($input);
         Session::flash('message', 'Post Created');
         return redirect(route('admin.posts.manage'));
     }

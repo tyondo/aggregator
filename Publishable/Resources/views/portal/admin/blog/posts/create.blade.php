@@ -56,18 +56,16 @@
                     <label class="form-label" for="field-1">Featured Image</label>
                     <span class="desc"></span>
                     <div class="controls">
-                        {{ Form::file('photo_id', ['class' => 'form-control']) }}
+                        {{ Form::file('featured_image_id', ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
                     <span class="desc"></span>
-                    <select multiple class="form-control">
-                        <option >Graphic</option>
-                        <option >Web Design</option>
-                        <option >Branding</option>
-                        <option>Web</option>
-                        <option>SEO</option>
+                    <select name="tag_id" class="form-control">
+                        <option value="1">Business</option>
+                        <option value="2">Product Update</option>
+                        <option value="3">News</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -78,15 +76,7 @@
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
                     <span class="desc"></span>
-                    {{Form::select('status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="field-1">{{config('aggregator.purpose')}} Author</label>
-                    <span class="desc"></span>
-                    <div class="controls">
-                        <input type="text" value="" class="form-control" id="field-1">
-                    </div>
+                    {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                     <div class="text-left">

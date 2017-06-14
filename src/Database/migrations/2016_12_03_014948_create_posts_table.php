@@ -17,8 +17,9 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index()->default(1);
-            $table->integer('photo_id')->unsigned()->index()->default(1);
-            $table->integer('status')->index()->default(1);
+            $table->integer('tag_id')->unsigned()->index()->default(1);
+            $table->integer('featured_image_id')->unsigned()->index()->default(1);
+            $table->integer('post_status')->index()->default(1);
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('body');
