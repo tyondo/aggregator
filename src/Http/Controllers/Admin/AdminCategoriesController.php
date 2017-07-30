@@ -48,10 +48,15 @@ class AdminCategoriesController extends Controller
         if(Auth::user()->can('store.categories')){
 
         }
-        //$post->slug = str_slug($post->title);
-        Category::create($request->all());
+        $categoryData = [
+            'name' => $request->input('name'),
+            'slug' => str_slug($request->input('name')),
+            'description' => $request->input('description')
+        ];
+
+        Category::create($categoryData);
         Session::flash('message', 'New Category created');
-        return redirect('/admin/categories/');
+        return redirect()->route('admin.categories.index');
     }
 
     /**

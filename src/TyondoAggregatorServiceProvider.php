@@ -22,7 +22,7 @@ class TyondoAggregatorServiceProvider extends ServiceProvider
     protected $defer = false;
     protected $providers = [
         'Collective\Html\HtmlServiceProvider',
-        'Petehouston\Tinymce\TinymceServiceProvider',
+       // 'Petehouston\Tinymce\TinymceServiceProvider',
     ];
     protected $aliases = [
         'Form' => 'Collective\Html\FormFacade',

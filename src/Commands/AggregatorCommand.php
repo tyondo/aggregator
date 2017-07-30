@@ -147,13 +147,17 @@ class AggregatorCommand extends Command
 
     protected function createUser($email, $password, $firstName, $lastName)
     {
-        $user = User::firstOrCreate(['email' => $email]);
-        $user->password = bcrypt($password);
-        $user->first_name = $firstName;
-        $user->last_name = $lastName;
-        $user->name = $firstName.' '.$lastName;
-        $user->role = $this::ROLE_ADMINISTRATOR;
-        $user->save();
+        $user = User::firstOrCreate([
+            'email' => $email,
+            'name'=> $firstName.' '.$lastName,
+            'password' => bcrypt($password)
+        ]);
+        //$user->password = bcrypt($password);
+        //$user->first_name = $firstName;
+        //$user->last_name = $lastName;
+        //$user->name = $firstName.' '.$lastName;
+        //$user->role = $this::ROLE_ADMINISTRATOR;
+        //$user->save();
 
         //$this->author($user->name);
         $this->comment('Saving admin user account...');

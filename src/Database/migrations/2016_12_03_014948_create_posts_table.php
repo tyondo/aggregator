@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->longText('body');
             $table->text('summary');
+            $table->string('key_words');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');

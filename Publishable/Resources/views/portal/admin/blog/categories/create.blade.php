@@ -36,14 +36,6 @@
                                     {{ Form::text('name', null, ['class' => 'form-control', 'placeholder'=> 'Category']) }}
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="field-1">Category Slug</label>
-                                <span class="desc"></span>
-                                <div class="controls">
-                                    {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder'=> 'Slug']) }}
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="form-label" for="field-6">Description</label>
                                 <span class="desc"></span>

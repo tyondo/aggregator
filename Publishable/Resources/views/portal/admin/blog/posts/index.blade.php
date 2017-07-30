@@ -65,7 +65,7 @@
                                     <i class="fa fa-tags"></i> <a href="#">responsive</a> <a href="#">web</a> <a href="#">mobile</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-newspaper-o"></i>
-                                    <a href="#">{{--$post->category->name--}}</a>
+                                    <a href="#">{{$post->category->name}}</a>
                                     <a href="#">web</a>
                                 </p>
                                 <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{--asset($post->photo->file)--}}" alt="">

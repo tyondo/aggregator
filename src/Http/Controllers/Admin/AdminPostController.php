@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Pagination\Paginator;
 use Tyondo\Aggregator\Models\Post;
 use Tyondo\Aggregator\Models\Photo;
 use Tyondo\Aggregator\Models\Category;
-use Tyondo\Aggregator\Http\Requests\AdminPostCreateRequest;
 
 class AdminPostController extends Controller
 {
@@ -26,6 +24,7 @@ class AdminPostController extends Controller
         }
         //$posts = Post::paginate(2);
         $posts = Post::all();
+        //return $posts->photo->file;
         return view('aggregator::portal.admin.blog.posts.index', compact('posts'));
     }
     public function managePosts()
@@ -73,6 +72,11 @@ class AdminPostController extends Controller
             $photo = Photo::create(['file'=> $name]);
             $input['featured_image_id'] = $photo->id;
         }
+        if ($file = $request->input('featured_image_id')){
+            $input = $request->all();
+            $photo = Photo::create(['file'=> $request->input('featured_image_id')]);
+            $input['featured_image_id'] = $photo->id;
+        }
 
         $postData = [
             'user_id' => Auth::user()->id,
@@ -107,6 +111,7 @@ class AdminPostController extends Controller
 
         }
         $post = Post::findOrFail($id);
+        //return $post;
         return view('aggregator::portal.admin.blog.posts.show', compact('post'));
     }
 
@@ -142,7 +147,7 @@ class AdminPostController extends Controller
         $input = $request->all();
         $post = Post::find($id);
         $post->category_id = $input['category_id'];
-        $post->status = $input['status'];
+        $post->post_status = $input['post_status'];
             if($post->title != $input['title']){
                 $post->title = $input['title'];
                 $post->slug = str_slug($request->input('title')) .'-'.time();

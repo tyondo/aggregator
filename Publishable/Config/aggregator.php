@@ -18,7 +18,7 @@ return [
     |
     |
     */
-    'purpose'=>'Policies',
+    'purpose'=>'Posts',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,8 +83,8 @@ return [
 */
     'views' => [
         'layouts' => [
-            //'admin'        => 'aggregator::layouts.blog.admin',
-            'admin' => 'mnara::admin.layouts.app',
+            'admin'        => 'aggregator::layouts.blog.admin',
+            //'admin' => 'mnara::admin.layouts.app',
         ],
     ]
 
