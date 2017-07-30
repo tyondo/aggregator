@@ -1,6 +1,6 @@
 {
-	"name": "tyondo/blog",
-	"description": "A simple blog engine",
+	"name": "tyondo/aggregator",
+	"description": "A simple blog package",
 	"keywords": ["blog", "tyondo"],
 	"type": "library",
 	"minimum-stability": "dev",
@@ -37,7 +37,7 @@
 			"database"
 		],
 		"psr-4": {
-			"Tyondo\\Aggregator": "src/"
+			"Tyondo\\Aggregator\\": "src/"
 		}
 	}
 }
