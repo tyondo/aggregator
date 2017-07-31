@@ -90,8 +90,6 @@ class AdminPostController extends Controller
         $postData = [
             'user_id' => Auth::user()->id,
             'category_id' => $request->input('category_id'),
-            'tag_id' => $request->input('tag_id'),
-            //'featured_image_id' => $input['featured_image_id'],
             'title' => $request->input('title'),
             'slug' => str_slug($request->input('title')) .'-'.time(),
             'summary' => $request->input('summary'),

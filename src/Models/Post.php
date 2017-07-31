@@ -27,7 +27,7 @@ class Post extends Model
          */
         public function tags()
         {
-            return $this->belongsToMany(config('aggregator.namespace').'post_tag')->withTimestamps();
+            return $this->belongsToMany(config('aggregator.namespace').'PostTag','post_tag','post_id','tag_id')->withTimestamps();
         }
         /**
          * Sync tag relationships and add new tags as needed.

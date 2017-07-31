@@ -26,7 +26,7 @@ class Tag extends Model
          */
         public function posts()
         {
-            return $this->belongsToMany(config('aggregator.namespace').'post_tag')->withTimestamps();
+            return $this->belongsToMany(config('aggregator.namespace').'Post','post_tag','post_id','tag_id')->withTimestamps();
         }
         /**
          * Add tags from the list.
@@ -41,11 +41,9 @@ class Tag extends Model
             $found = static::whereIn('tag', $tags)->pluck('tag')->all();
             foreach (array_diff($tags, $found) as $tag) {
                 static::create([
-                    'tag' => $tag,
+                    'tag' => str_slug($tag),
                     'title' => $tag,
-                    'subtitle' => 'Subtitle for '.$tag,
                     'meta_description' => '',
-                    'reverse_direction' => false,
                 ]);
             }
         }
