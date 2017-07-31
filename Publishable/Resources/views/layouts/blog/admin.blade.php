@@ -63,10 +63,10 @@
                       <li><a href="{{route('admin.posts.create')}}">Add Post</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-cubes"></i> Categories<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-cubes"></i> Metadata<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{route('admin.categories.index')}}">Category</a></li>
-                      <li><a href="{{route('admin.categories.create')}}">Add Category</a></li>
+                      <li><a href="{{route('admin.categories.index')}}">Metadata</a></li>
+                      <li><a href="{{route('admin.categories.create')}}">Add Metadata</a></li>
                     </ul>
                   </li>
                 </ul>
