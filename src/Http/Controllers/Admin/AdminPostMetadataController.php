@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Tyondo\Aggregator\Models\Category;
+use Tyondo\Aggregator\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
-class AdminCategoriesController extends Controller
+class AdminPostMetadataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +22,8 @@ class AdminCategoriesController extends Controller
 
         }
         $categories = Category::all();
-      return view('aggregator::portal.admin.blog.categories.index', compact('categories'));
+        $tags = Tag::all();
+      return view('aggregator::portal.admin.blog.categories.index', compact('categories','tags'));
     }
 
     /**
@@ -48,15 +50,30 @@ class AdminCategoriesController extends Controller
         if(Auth::user()->can('store.categories')){
 
         }
-        $categoryData = [
-            'name' => $request->input('name'),
-            'slug' => str_slug($request->input('name')),
-            'description' => $request->input('description')
-        ];
+        if ($request->input('term_type') == 'category'){
+                $metaData = [
+                    'title' => $request->input('title'),
+                    'category' => str_slug($request->input('title')),
+                    'meta_description' => $request->input('description')
+                ];
+                Category::create($metaData);
+                Session::flash('message', 'New Category created');
+                return redirect()->route('admin.categories.index');
+        }
+        if ($request->input('term_type') == 'tag'){
+            $metaData = [
+                'title' => $request->input('title'),
+                'tag' => str_slug($request->input('title')),
+                'meta_description' => $request->input('description')
+            ];
+            Tag::create($metaData);
+            Session::flash('message','New Tag Created');
+            return redirect()->route('admin.categories.index');
 
-        Category::create($categoryData);
-        Session::flash('message', 'New Category created');
-        return redirect()->route('admin.categories.index');
+        }
+
+
+
     }
 
     /**

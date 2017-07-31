@@ -27,7 +27,7 @@ Route::resource('admin/posts', $namespacePrefix.'Admin\AdminPostController', [
     ]
 ]);
 //Categories
-Route::resource('admin/categories', $namespacePrefix.'Admin\AdminCategoriesController', [
+Route::resource('admin/categories', $namespacePrefix.'Admin\AdminPostMetadataController', [
     'names'=> [
         'index' => 'admin.categories.index',
         'create' => 'admin.categories.create',

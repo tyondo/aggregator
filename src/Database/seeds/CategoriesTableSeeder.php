@@ -15,9 +15,9 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
       DB::table('categories')->insert([
-          'name' => 'Uncategorized',
-          'slug' => 'uncategorized',
-          'description' => 'Default Category',
+          'title' => 'Uncategorized',
+          'category' => 'uncategorized',
+          'meta_description' => 'Default Category',
           'created_at' => Carbon::now(),
           'updated_at' => Carbon::now(),
       ]);

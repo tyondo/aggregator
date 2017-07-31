@@ -70,16 +70,19 @@
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
                     <span class="desc"></span>
-                    <select name="tag_id" class="form-control">
-                        <option value="1">Business</option>
-                        <option value="2">Product Update</option>
-                        <option value="3">News</option>
-                    </select>
-                    <select name="tags[]" id="tags" class="selectpicker" multiple>
-                        @foreach ($allTags as $tag)
+                    <select name="tags[]" multiple class="form-control">
+                        @foreach ($tags as $tag)
                             <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
                         @endforeach
                     </select>
+
+                    {{--<select name="tags[]" multiple class="form-control">
+                        <option >Graphic</option>
+                        <option >Web Design</option>
+                        <option >Branding</option>
+                        <option>Web</option>
+                        <option>SEO</option>
+                    </select>--}}
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>

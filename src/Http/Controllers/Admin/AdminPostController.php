@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Tyondo\Aggregator\Models\Post;
 use Tyondo\Aggregator\Models\Photo;
 use Tyondo\Aggregator\Models\Category;
+use Tyondo\Aggregator\Models\Tag;
 
 class AdminPostController extends Controller
 {
@@ -46,8 +47,9 @@ class AdminPostController extends Controller
         if(Auth::user()->can('create.posts')){
 
         }
-        $categories = Category::pluck('name', 'id')->all();
-        return view('aggregator::portal.admin.blog.posts.create', compact('categories'));
+        $categories = Category::pluck('category', 'id')->all();
+        $tags = Tag::pluck('tag')->all();
+        return view('aggregator::portal.admin.blog.posts.create', compact('categories','tags'));
     }
 
     /**
