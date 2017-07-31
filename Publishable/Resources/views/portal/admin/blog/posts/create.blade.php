@@ -75,6 +75,11 @@
                         <option value="2">Product Update</option>
                         <option value="3">News</option>
                     </select>
+                    <select name="tags[]" id="tags" class="selectpicker" multiple>
+                        @foreach ($allTags as $tag)
+                            <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>

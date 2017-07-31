@@ -15,19 +15,48 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->string('subtitle');
+            $table->longText('body');
+            $table->integer('featured_image_id')->unsigned()->index()->default(1);
+            $table->string('meta_description')->nullable();
+            $table->integer('post_status')->index()->default(1);
+            $table->boolean('is_published')->default(false);
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index()->default(1);
             $table->integer('tag_id')->unsigned()->index()->default(1);
-            $table->integer('featured_image_id')->unsigned()->index()->default(1);
-            $table->integer('post_status')->index()->default(1);
-            $table->string('title');
             $table->string('slug')->unique();
-            $table->longText('body');
             $table->text('summary');
             $table->string('key_words');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+        });
+        //tags
+        Schema::create('tags', function  (Blueprint $table) {
+            $table->increments('id');
+            $table->string('tag')->unique();
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('meta_description');
+            $table->string('layout')->default(config('blog.tag_layout'));
+            $table->boolean('reverse_direction');
+            $table->timestamps();
+        });
+        //post tag pivot
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->integer('post_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+            $table->timestamps();
+
+            $table->primary(['post_id', 'tag_id']);
+            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onUpdate('cascade')->onDelete('cascade');
+        });
+        //settings
+        Schema::create('settings', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->string('setting_name')->index();
+            $table->text('setting_value')->nullable();
         });
     }
 
@@ -39,5 +68,8 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('tags');
+        Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('settings');
     }
 }

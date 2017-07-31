@@ -64,4 +64,15 @@ class User extends Authenticatable
     {
       return $this->hasMany(config('aggregator.namespace').'Post');
     }
+    /**
+     * Get the number of posts by a user.
+     *
+     * @param $userId
+     *
+     * @return bool
+     */
+    public static function postCount($userId)
+    {
+        return Post::where('user_id', $userId)->get()->count();
+    }
 }

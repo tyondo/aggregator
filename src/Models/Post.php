@@ -20,4 +20,30 @@ class Post extends Model
 		{
 			return $this->belongsTo(config('aggregator.namespace').'Category');
 		}
+        /**
+         * Get the tags relationship.
+         *
+         * @return BelongsToMany
+         */
+        public function tags()
+        {
+            return $this->belongsToMany(config('aggregator.namespace').'post_tag')->withTimestamps();
+        }
+        /**
+         * Sync tag relationships and add new tags as needed.
+         *
+         * @param array $tags
+         */
+        public function syncTags(array $tags)
+        {
+            Tag::addNeededTags($tags);
+            if (count($tags)) {
+                $this->tags()->sync(
+                    Tag::whereIn('tag', $tags)->pluck('id')->all()
+                );
+
+                return;
+            }
+            $this->tags()->detach();
+        }
 }

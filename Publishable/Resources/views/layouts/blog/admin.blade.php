@@ -230,6 +230,8 @@
       });
     </script>
     <!-- /Datatables -->
-  @include('aggregator::shared.GoogleAnalytics')
+    @if (!empty(\Canvas\Models\Settings::gaId()))
+        @include('aggregator::shared.GoogleAnalytics')
+    @endif
   </body>
 </html>

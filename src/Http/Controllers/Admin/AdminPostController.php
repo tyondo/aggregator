@@ -89,7 +89,8 @@ class AdminPostController extends Controller
             'body' => $request->input('body'),
             'post_status' => $request->input('post_status'),
         ];
-        Post::create($postData);
+       $post = Post::create($postData);
+        $post->syncTags($request->get('tags', []));
 
       //  return $postData;
 
@@ -154,6 +155,7 @@ class AdminPostController extends Controller
             }
         $post->body = $input['body'];
         $post->save();
+        $post->syncTags($request->get('tags', []));
 
       return redirect(route('admin.posts.manage'));
     }
@@ -170,6 +172,7 @@ class AdminPostController extends Controller
 
         }
         $post = Post::findOrFail($id);
+        $post->tags()->detach();
         unlink(public_path($post->photo->file));
         $post->delete();
         Session::flash('message', 'The post has been deleted :-(');
