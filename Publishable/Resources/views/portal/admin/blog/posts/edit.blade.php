@@ -34,7 +34,7 @@
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
 
                             <div class="form-group">
-                                <label class="form-label" for="field-1">Title</label>
+                                <label class="form-label" for="field-1">{{config('aggregator.purpose')}} Title</label>
                                 <span class="desc"></span>
                                 <div class="controls">
                                     {{ Form::text('title', null, ['class' => 'form-control']) }}
@@ -43,19 +43,43 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label class="form-label" for="field-5">Content</label>
+                                <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Content</label>
                                 <span class="desc"></span>
                                 {{ Form::textarea('body', null, ['class' => 'form-control', 'id' => 'postBody']) }}
                                 <br>
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                               <div class="form-group">
-                                  <label class="form-label" for="field-6">Summary</label>
+                                  <label class="form-label" for="field-6">{{config('aggregator.purpose')}} Excerpt</label>
                                   <span class="desc"></span>
                                   <div class="controls">
                                     {{ Form::text('summary', null, ['class' => 'autogrow form-control']) }}
                                   </div>
                               </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
+                                    <span class="desc"></span>
+                                    {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
+                                    <span class="desc"></span>
+                                    <select name="tags[]" multiple class="form-control">
+                                        @foreach ($tags as $tag)
+                                            <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
+                                    <span class="desc"></span>
+                                    {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
+                                    <span class="desc"></span>
+                                    {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                                </div>
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Created On</label>
                                     <span class="desc"></span>
@@ -68,6 +92,17 @@
                                     <span class="desc"></span>
                                     <div class="controls">
                                       {{ Form::text('updated_at', null, ['class' => 'form-control datepicker','data-format'=>'mm/dd/yyyy','disabled'=>'']) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="field-1">Featured Content</label>
+                                    <div class="input-group">
+                                      <span class="input-group-btn">
+                                        <a data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                          <i class="fa fa-file-video-o"></i> Choose
+                                        </a>
+                                      </span>
+                                        <input id="thumbnail" class="form-control" type="text" name="featured_content">
                                     </div>
                                 </div>
 
@@ -84,22 +119,8 @@
                                     <img id="holder" style="margin-top:15px;max-height:100px;" class="img-responsive" src="{!! $post->photo ? asset($post->photo->file)  : asset('assets/images/avatar2.png') !!}" alt="">
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
-                                    <span class="desc"></span>
-                                    <select multiple class="form-control">
-                                        <option >Graphic</option>
-                                        <option >Web Design</option>
-                                        <option >Branding</option>
-                                        <option>Web</option>
-                                        <option>SEO</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
-                                    <span class="desc"></span>
-                                    {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
-                                </div>
+
+
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
                                     <span class="desc"></span>
@@ -109,10 +130,8 @@
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary col-sm-4 col-xs-4">Save</button>
-                                    <button type="button" class="btn col-sm-4 col-xs-4">Cancel</button>
-                                </div>
-                    {!! Form::close() !!}
-                    {!! Form::open(['route' => ['admin.posts.destroy', $post->id ], 'method' => 'Delete' ]) !!}
+                                {!! Form::close() !!}
+                                {!! Form::open(['route' => ['admin.posts.destroy', $post->id ], 'method' => 'Delete' ]) !!}
         							<button type="submit" class="btn btn-danger col-sm-4 col-xs-4">Delete</button>
         						</div>
         			{!! Form::close() !!}

@@ -136,8 +136,9 @@ class AdminPostController extends Controller
 
         }
         $post = Post::findOrFail($id);
-        $categories = Category::pluck('name', 'id')->all();
-        return view('aggregator::portal.admin.blog.posts.edit', compact('categories', 'post'));
+        $categories = Category::pluck('category', 'id')->all();
+        $tags = Tag::pluck('tag')->all();
+        return view('aggregator::portal.admin.blog.posts.edit', compact('categories', 'post','tags'));
     }
 
     /**

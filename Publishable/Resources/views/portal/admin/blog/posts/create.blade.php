@@ -59,8 +59,6 @@
                     <span class="desc"></span>
                     {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                 </div>
-
-
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
                     <span class="desc"></span>
@@ -69,14 +67,6 @@
                             <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
                         @endforeach
                     </select>
-
-                    {{--<select name="tags[]" multiple class="form-control">
-                        <option >Graphic</option>
-                        <option >Web Design</option>
-                        <option >Branding</option>
-                        <option>Web</option>
-                        <option>SEO</option>
-                    </select>--}}
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
