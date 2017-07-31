@@ -16,19 +16,20 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('subtitle');
+            $table->string('slug')->unique();
+            $table->string('subtitle')->nullable();
             $table->longText('body');
-            $table->integer('featured_image_id')->unsigned()->index()->default(1);
+            $table->text('summary')->nullable();
             $table->string('meta_description')->nullable();
-            $table->integer('post_status')->index()->default(1);
             $table->boolean('is_published')->default(false);
             $table->integer('user_id')->unsigned()->index();
+            $table->integer('post_status')->index()->default(1);
             $table->integer('category_id')->unsigned()->index()->default(1);
-            $table->integer('tag_id')->unsigned()->index()->default(1);
-            $table->string('slug')->unique();
-            $table->text('summary');
-            $table->string('key_words');
+            $table->integer('featured_image_id')->unsigned()->index()->default(1);
+           // $table->integer('tag_id')->unsigned()->index()->default(1);
+            $table->string('key_words')->nullable();
             $table->timestamps();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
         //tags
@@ -36,10 +37,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('tag')->unique();
             $table->string('title');
-            $table->string('subtitle');
-            $table->string('meta_description');
-            $table->string('layout')->default(config('blog.tag_layout'));
-            $table->boolean('reverse_direction');
+            $table->string('subtitle')->nullable();
+            $table->string('meta_description')->nullable();
             $table->timestamps();
         });
         //post tag pivot

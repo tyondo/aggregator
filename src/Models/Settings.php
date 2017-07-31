@@ -16,6 +16,7 @@ class Settings extends Model
     public static function blogTitle()
     {
         return self::getByName('blog_title');
+        //return self::where('setting_name','blog_title')->get();
     }
     /**
      * Get the value of the Blog SEO.
@@ -25,6 +26,7 @@ class Settings extends Model
     public static function blogAuthor()
     {
         return self::getByName('blog_author');
+        //return self::where('setting_name','blog_author')->get();
     }
     /**
      * Get the value of the Google Analytics Tracking ID.
@@ -34,6 +36,7 @@ class Settings extends Model
     public static function gaId()
     {
         return self::getByName('ga_id');
+        //return self::where('setting_name','ga_id')->get();
     }
     /**
      * Return the Twitter card type selected by the user.
@@ -45,6 +48,16 @@ class Settings extends Model
     public static function twitterCardType()
     {
         return $twitterCardType = self::where('setting_name', 'twitter_card_type')->pluck('setting_value')->first();
+    }
+    /**
+     * Get the value settings by name.
+     *
+     * @param string $settingName
+     * @return string
+     */
+    public static function getByName($settingName)
+    {
+        return self::where('setting_name', $settingName)->pluck('setting_value')->first();
     }
 
 }

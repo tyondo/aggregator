@@ -11,6 +11,6 @@
         a.src = g;
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', '{!! \Canvas\Models\Settings::gaId() !!}', 'auto');
+    ga('create', '{!! \Tyondo\Aggregator\Models\Settings::gaId() !!}', 'auto');
     ga('send', 'pageview');
 </script>

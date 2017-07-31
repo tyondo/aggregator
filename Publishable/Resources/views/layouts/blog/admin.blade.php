@@ -230,7 +230,7 @@
       });
     </script>
     <!-- /Datatables -->
-    @if (!empty(\Canvas\Models\Settings::gaId()))
+    @if (!empty(\Tyondo\Aggregator\Models\Settings::gaId()))
         @include('aggregator::shared.GoogleAnalytics')
     @endif
   </body>
