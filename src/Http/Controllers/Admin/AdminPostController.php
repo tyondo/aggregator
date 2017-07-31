@@ -63,36 +63,44 @@ class AdminPostController extends Controller
         if(Auth::user()->can('store.posts')){
 
         }
+        $postData=[];
         //add validation
         $user = Auth::user();
         if($request->file('featured_image_id')){
-            $input = $request->all();
+           // $input = $request->all();
            // return 'there is a file';
             $file = $request->file('featured_image_id');
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
             $photo = Photo::create(['file'=> $name]);
-            $input['featured_image_id'] = $photo->id;
+            $postData['featured_image_id'] = $photo->id;
         }
         if ($file = $request->input('featured_image_id')){
-            $input = $request->all();
+            //$input = $request->all();
             $photo = Photo::create(['file'=> $request->input('featured_image_id')]);
-            $input['featured_image_id'] = $photo->id;
+            $postData['featured_image_id'] = $photo->id;
+        }
+        if ($request->input('post_type')){
+            $postData['post_type'] = $request->input('post_type');
+        }
+        if ($request->input('featured_content')){
+            $postData['featured_content'] = $request->input('featured_content');
         }
 
         $postData = [
             'user_id' => Auth::user()->id,
             'category_id' => $request->input('category_id'),
             'tag_id' => $request->input('tag_id'),
-            'featured_image_id' => $input['featured_image_id'],
+            //'featured_image_id' => $input['featured_image_id'],
             'title' => $request->input('title'),
             'slug' => str_slug($request->input('title')) .'-'.time(),
             'summary' => $request->input('summary'),
             'body' => $request->input('body'),
             'post_status' => $request->input('post_status'),
         ];
+        //return $request->get('tags', []);
        $post = Post::create($postData);
-        $post->syncTags($request->get('tags', []));
+       $post->syncTags($request->get('tags', []));
 
       //  return $postData;
 

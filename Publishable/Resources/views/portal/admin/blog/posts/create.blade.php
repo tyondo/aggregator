@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
                     <span class="desc"></span>
-                    {{Form::select('post_status', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                    {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                 </div>
 
 
@@ -96,7 +96,7 @@
                           <i class="fa fa-file-video-o"></i> Choose
                         </a>
                       </span>
-                        <input id="thumbnail" class="form-control" type="text" name="featured_image_id">
+                        <input id="thumbnail" class="form-control" type="text" name="featured_content">
                     </div>
                 </div>
                 <div class="form-group">
