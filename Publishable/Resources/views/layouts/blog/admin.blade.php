@@ -56,6 +56,7 @@
                 <h3>Options</h3>
                 <ul class="nav side-menu">
                   <li><a href="{{url('/')}}"><i class="fa fa-home"></i>Home</a></li>
+                  <li><a href="{{route('admin.media.manage')}}"><i class="fa fa-film"></i>Media</a></li>
                   <li><a><i class="fa fa-book"></i> Blog<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.posts.index')}}">Posts</a></li>

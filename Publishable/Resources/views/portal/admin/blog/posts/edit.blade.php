@@ -71,6 +71,11 @@
                             {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                         </div>
                         <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
+                            <span class="desc"></span>
+                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                        </div>
+                        <div class="form-group">
                             <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
                             <span class="desc"></span>
                             <select name="tags[]" multiple class="form-control">
@@ -83,11 +88,6 @@
                             <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
                             <span class="desc"></span>
                             {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
-                            <span class="desc"></span>
-                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="field-5">Created On</label>
@@ -127,11 +127,7 @@
                             </div>
                             <img id="holder" style="margin-top:15px;max-height:100px;" class="img-responsive" src="{!! $post->photo ? asset($post->photo->file)  : asset('assets/images/avatar2.png') !!}" alt="">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
-                            <span class="desc"></span>
-                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                        </div>
+
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                             <div class="text-left">
                                 <button type="submit" class="btn btn-primary col-sm-4 col-xs-4">Save</button>
@@ -149,7 +145,6 @@
 
 </div>
 </section>
-{{--@include('mceImageUpload::upload_form')--}}
 @endsection
 
 @section('script')

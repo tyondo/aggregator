@@ -81,6 +81,11 @@ class Install extends AggregatorCommand
                     '--y' => true,
                     '--force' => true,
                 ]);
+                // Publish aggregator extra package files...
+                Artisan::call('aggregator:publish:packages', [
+                    '--y' => true,
+                    '--force' => true,
+                ]);
                 // Publish view files...
                 if ($withViews) {
                     Artisan::call('aggregator:publish:views', [

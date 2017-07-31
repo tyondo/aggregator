@@ -75,6 +75,11 @@
                         {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
+                        <span class="desc"></span>
+                        {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                    </div>
+                    <div class="form-group">
                         <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
                         <span class="desc"></span>
                         <select name="tags[]" multiple class="form-control">
@@ -88,11 +93,7 @@
                         <span class="desc"></span>
                         {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
-                        <span class="desc"></span>
-                        {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                    </div>
+
                     <div class="form-group">
                         <label class="form-label" for="field-1">Featured Content</label>
                         <div class="input-group">

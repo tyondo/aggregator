@@ -10,6 +10,7 @@ use Tyondo\Aggregator\Commands\Publish\Migrations;
 use Tyondo\Aggregator\Commands\Publish\Views;
 use Tyondo\Aggregator\Commands\Publish\Assets;
 use Tyondo\Aggregator\Commands\Publish\Config;
+use Tyondo\Aggregator\Commands\Publish\Packages;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class TyondoAggregatorServiceProvider extends ServiceProvider
@@ -22,12 +23,15 @@ class TyondoAggregatorServiceProvider extends ServiceProvider
     protected $defer = false;
     protected $providers = [
         'Collective\Html\HtmlServiceProvider',
+        'Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
        // 'Petehouston\Tinymce\TinymceServiceProvider',
     ];
     protected $aliases = [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'Aggregator' => 'Tyondo\Aggregator\Aggregator',
+        'Image' => 'Intervention\Image\Facades\Image',
     ];
     protected $publishableDir = __DIR__ . '/../Publishable/';
     protected $basePath = __DIR__;
@@ -43,6 +47,7 @@ class TyondoAggregatorServiceProvider extends ServiceProvider
 	Migrations::class,
 	Assets::class,
 	Config::class,
+    Packages::class,
     ];
 
     /**
