@@ -55,17 +55,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="field-1">Featured Image</label>
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                          <i class="fa fa-picture-o"></i> Choose
-                        </a>
-                      </span>
-                        <input id="thumbnail" class="form-control" type="text" name="featured_image_id">
-                    </div>
-                    <img id="holder" style="margin-top:15px;max-height:100px;">
+                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
+                    <span class="desc"></span>
+                    {{Form::select('post_status', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                 </div>
+
 
                 <div class="form-group">
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
@@ -93,6 +87,29 @@
                     <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
                     <span class="desc"></span>
                     {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="field-1">Featured Content</label>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <a data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                          <i class="fa fa-file-video-o"></i> Choose
+                        </a>
+                      </span>
+                        <input id="thumbnail" class="form-control" type="text" name="featured_image_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="field-1">Featured Image</label>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                          <i class="fa fa-picture-o"></i> Choose
+                        </a>
+                      </span>
+                        <input id="thumbnail" class="form-control" type="text" name="featured_image_id">
+                    </div>
+                    <img id="holder" style="margin-top:15px;max-height:100px;">
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                     <div class="text-left">
