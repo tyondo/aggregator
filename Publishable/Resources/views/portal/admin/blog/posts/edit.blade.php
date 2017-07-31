@@ -26,11 +26,12 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-        <section class="box ">
-            <div class="content-body">
-                <div class="row">
-                  {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PATCH', 'files' => true ]) !!}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <div class="col-sm-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PATCH', 'files' => true ]) !!}
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
 
                             <div class="form-group">
@@ -49,99 +50,104 @@
                                 <br>
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                              <div class="form-group">
-                                  <label class="form-label" for="field-6">{{config('aggregator.purpose')}} Excerpt</label>
-                                  <span class="desc"></span>
-                                  <div class="controls">
-                                    {{ Form::text('summary', null, ['class' => 'autogrow form-control']) }}
-                                  </div>
-                              </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
-                                    <span class="desc"></span>
-                                    {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
-                                    <span class="desc"></span>
-                                    <select name="tags[]" multiple class="form-control">
-                                        @foreach ($tags as $tag)
-                                            <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
-                                    <span class="desc"></span>
-                                    {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
-                                    <span class="desc"></span>
-                                    {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">Created On</label>
+                                    <label class="form-label" for="field-6">{{config('aggregator.purpose')}} Excerpt</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                      {{ Form::text('created_at', null, ['class' => 'form-control datepicker','data-format'=>'mm/dd/yyyy','disabled'=>'']) }}
+                                        {{ Form::text('summary', null, ['class' => 'autogrow form-control']) }}
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">Last Edited</label>
-                                    <span class="desc"></span>
-                                    <div class="controls">
-                                      {{ Form::text('updated_at', null, ['class' => 'form-control datepicker','data-format'=>'mm/dd/yyyy','disabled'=>'']) }}
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="field-1">Featured Content</label>
-                                    <div class="input-group">
+                            </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
+                            <span class="desc"></span>
+                            {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
+                            <span class="desc"></span>
+                            <select name="tags[]" multiple class="form-control">
+                                @foreach ($tags as $tag)
+                                    <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Categories</label>
+                            <span class="desc"></span>
+                            {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
+                            <span class="desc"></span>
+                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">Created On</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                {{ Form::text('created_at', null, ['class' => 'form-control datepicker','data-format'=>'mm/dd/yyyy','disabled'=>'']) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">Last Edited</label>
+                            <span class="desc"></span>
+                            <div class="controls">
+                                {{ Form::text('updated_at', null, ['class' => 'form-control datepicker','data-format'=>'mm/dd/yyyy','disabled'=>'']) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Featured Content</label>
+                            <div class="input-group">
                                       <span class="input-group-btn">
                                         <a data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                                           <i class="fa fa-file-video-o"></i> Choose
                                         </a>
                                       </span>
-                                        <input id="thumbnail" class="form-control" type="text" name="featured_content">
-                                    </div>
-                                </div>
+                                <input id="thumbnail" class="form-control" type="text" name="featured_content">
+                            </div>
+                        </div>
 
-                                <div class="form-group">
-                                    <label class="form-label" for="field-1">Featured Image</label>
-                                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">Featured Image</label>
+                            <div class="input-group">
                                           <span class="input-group-btn">
                                             <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                                               <i class="fa fa-picture-o"></i> Choose
                                             </a>
                                           </span>
-                                        <input id="thumbnail" class="form-control" type="text" name="photo_id">
-                                    </div>
-                                    <img id="holder" style="margin-top:15px;max-height:100px;" class="img-responsive" src="{!! $post->photo ? asset($post->photo->file)  : asset('assets/images/avatar2.png') !!}" alt="">
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
-                                    <span class="desc"></span>
-                                    {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
-                                </div>
+                                <input id="thumbnail" class="form-control" type="text" name="photo_id">
                             </div>
-                            <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                                <div class="text-left">
-                                    <button type="submit" class="btn btn-primary col-sm-4 col-xs-4">Save</button>
+                            <img id="holder" style="margin-top:15px;max-height:100px;" class="img-responsive" src="{!! $post->photo ? asset($post->photo->file)  : asset('assets/images/avatar2.png') !!}" alt="">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
+                            <span class="desc"></span>
+                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-primary col-sm-4 col-xs-4">Save</button>
                                 {!! Form::close() !!}
                                 {!! Form::open(['route' => ['admin.posts.destroy', $post->id ], 'method' => 'Delete' ]) !!}
-        							<button type="submit" class="btn btn-danger col-sm-4 col-xs-4">Delete</button>
-        						</div>
-        			{!! Form::close() !!}
+                                <button type="submit" class="btn btn-danger col-sm-4 col-xs-4">Delete</button>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+
                 </div>
-
-
-            </div>
-            </div>
-        </section>
+        </div>
     </div>
+
+</div>
 </section>
 {{--@include('mceImageUpload::upload_form')--}}
 @endsection
