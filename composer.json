@@ -18,7 +18,7 @@
 		"laravelcollective/html": "5.3.1|5.4.1",
 		"unisharp/laravel-filemanager": "^1.8",
 		"intervention/image": "^2.4",
-        "doctrine/dbal": "^2.5",
+        	"doctrine/dbal": "^2.5",
 		"maatwebsite/excel": "^2.1"
 	},
 	"require-dev": {
@@ -28,9 +28,6 @@
 		"tyondo/mnara": "User management package with ACL for managing Users / Roles / Permissions in Laravel 5.3 and 5.4."
 	},
 	"autoload": {
-		"classmap": [
-			"database"
-		],
 		"psr-4": {
 			"Tyondo\\Aggregator\\": "src/"
 		}

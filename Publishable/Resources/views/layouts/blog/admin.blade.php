@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    {{--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{asset('frontEnd/images/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('')}}" />
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>--}}
+    @include('aggregator::layouts.meta')
     <!-- Bootstrap -->
     <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,12 +20,6 @@
     <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/iCheck/skins/flat/green.css')}}" rel="stylesheet">
     <!-- Datatables -->
     <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/DataTables/datatables.min.css')}}" rel="stylesheet">
-
-    {{--<link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">--}}
 
   @yield('css')
     <!-- Custom Theme Style -->
@@ -165,22 +160,6 @@
     <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/iCheck/icheck.min.js')}}"></script>
     <!-- Datatables -->
     <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/DataTables/datatables.min.js')}}"></script>
-
-    {{--<script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/datatables.net-scroller/js/datatables.scroller.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/jszip/dist/jszip.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/pdfmake/build/pdfmake.min.js')}}"></script>
-    <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/pdfmake/build/vfs_fonts.js')}}"></script>--}}
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/custom/js/custom.min.js')}}"></script>

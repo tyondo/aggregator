@@ -29,6 +29,26 @@ class Settings extends Model
         //return self::where('setting_name','blog_author')->get();
     }
     /**
+     * Get the value of the Blog SEO.
+     *
+     * return @string
+     */
+    public static function blogSeo()
+    {
+        return self::getByName('blog_seo');
+        //return self::where('setting_name','blog_author')->get();
+    }
+    /**
+     * Get the value of the Blog SEO.
+     *
+     * return @string
+     */
+    public static function blogDescription()
+    {
+        return self::getByName('blog_description');
+        //return self::where('setting_name','blog_author')->get();
+    }
+    /**
      * Get the value of the Google Analytics Tracking ID.
      *
      * return @string
