@@ -55,14 +55,6 @@
                             {{-- Form::textarea('summary', null, ['class' => 'form-control']) --}}
                         </div>
                     </div>
-
-                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                        <div class="text-left">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <button type="button" class="btn">Cancel</button>
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -117,6 +109,14 @@
                         </div>
                         <img id="holder" style="margin-top:15px;max-height:100px;">
                     </div>
+
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn">Cancel</button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
