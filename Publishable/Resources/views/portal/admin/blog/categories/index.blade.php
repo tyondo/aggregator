@@ -25,13 +25,50 @@
       <div class="clearfix"></div>
 
       <div class="row">
-          <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="col-sm-4">
+              {!! Form::open(['route' => 'admin.categories.store', 'method' => 'post', 'files' => true ]) !!}
+              <div class="">
+
+                  <div class="form-group">
+                      <label class="form-label" for="field-1">Term Title</label>
+                      <span class="desc"></span>
+                      <div class="controls">
+                          {{ Form::text('title', null, ['class' => 'form-control', 'placeholder'=> 'Metadata']) }}
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label" for="field-6">Description</label>
+                      <span class="desc"></span>
+                      <div class="controls">
+                          {{ Form::text('meta_description', null, ['class' => 'form-control ']) }}
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label" for="field-5">Term Type</label>
+                      <span class="desc"></span>
+                      <select name="term_type" class="form-control">
+                          <option value="category">Category</option>
+                          <option value="tag">Tag</option>
+                      </select>
+                  </div>
+
+              </div>
+
+              <div class="padding-bottom-30">
+                  <div class="text-left">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <button type="button" class="btn">Cancel</button>
+                  </div>
+              </div>
+              {!! Form::close() !!}
+          </div>
+             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                 <br />
                   <div class="panel panel-default">
                       <div class="panel-body">
                           <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <h3 class="text-center">Categories</h3>
+                                  <h3 class="text-center">Metadata</h3>
                                   <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
                                       <thead>
                                       <tr>
@@ -58,40 +95,6 @@
                       </div>
                   </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <div class="panel panel-default">
-                      <div class="panel-body">
-                          <div class="row">
-                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <h3 class="text-center">Tags</h3>
-
-                                  <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
-                                      <thead>
-                                      <tr>
-                                          <th>ID</th>
-                                          <th>Tag Name</th>
-                                          <th>Description</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                      @if(isset($categories))
-                                          @foreach($categories as $category)
-                                              <tr>
-                                                  <td>{{$category->id}}</td>
-                                                  <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->name}}</a></td>
-                                                  <td>{{$category->description}}</td>
-                                              </tr>
-                                          @endforeach
-                                      @endif
-                                      </tbody>
-                                  </table>
-                                  <!-- ********************************************** -->
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
       </div>
   </section>
 @endsection
