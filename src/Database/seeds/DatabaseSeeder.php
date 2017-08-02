@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call('Tyondo\Aggregator\Database\seeds\PhotoTableSeeder');
          $this->call('Tyondo\Aggregator\Database\seeds\CategoriesTableSeeder');
          $this->call('Tyondo\Aggregator\Database\seeds\PostsTableSeeder');
 
