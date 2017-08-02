@@ -106,6 +106,7 @@ class AdminPostController extends Controller
        // $user->posts()->create($input);
         Session::flash('message', 'Post Created');
         return redirect(route('admin.posts.manage'));
+
     }
 
     /**
@@ -120,8 +121,46 @@ class AdminPostController extends Controller
 
         }
         $post = Post::findOrFail($id);
-        //return $post;
+        //return $post->category;
+        //return $post->tags->pluck('id','tag');
+        /*foreach ($post->tags->toArray() as $tag){
+            return $tag['id'];
+        }*/
         return view('aggregator::portal.admin.blog.posts.show', compact('post'));
+        /*
+         * id
+         * title
+         * slug
+         * subtitle
+         * body
+         * summary
+         * meta_description
+         * post_type
+         * featured_content
+         * is_published
+         * user_id
+         * post_status
+         * category_id
+         * featured_image_id
+         * key_words
+         * created_at
+         * updated_at
+         * category()
+         * tags()
+         * syncTags(array)
+         * user()
+         * photo()
+         * How to access each tag
+         * @foreach($post->tags->toArray() as $tag )
+            <a href="{{$tag['id']}}">{{$tag['title']}}</a>
+           @endforeach
+         *How to access post category
+         * $post->category->category
+         * How to access post created time in human language
+         * $post->created_at->diffForHumans()
+         * How to access post featured image
+         * $post->photo->file
+         * */
     }
 
     /**

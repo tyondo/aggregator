@@ -39,7 +39,6 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
 
-
                         <!-- start -->
 
                         <div class="blog_post full_blog_post">
@@ -48,11 +47,13 @@
                             <p class="blog_info">
                                 <i class="fa fa-comment"></i> <a href="#comments">3 comments</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-tags"></i> <a href="#">responsive</a> <a href="#">web</a> <a href="#">mobile</a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-newspaper-o"></i> <a href="#">{{$post->category->name}}</a> <a href="#">web</a>
+                                <i class="fa fa-tags"></i>
+                                @foreach($post->tags->toArray() as $tag )
+                                    <a href="#">{{$tag['title']}}</a>
+                                @endforeach
+                                <i class="fa fa-newspaper-o"></i> <a href="#">{{$post->category->category}}</a>
                             </p>
-                            <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{asset($post->photo->file)}}" alt="">
+                            <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{asset(isset($post->photo->file))}}" alt="">
 
                             <div class="blog-content">
                                 <?php print_r($post->body);?>

@@ -18,7 +18,7 @@ class Post extends Model
 		}
 		public function category()
 		{
-			return $this->belongsTo(config('aggregator.namespace').'Category');
+			return $this->hasOne(config('aggregator.namespace').'Category','id','category_id');
 		}
         /**
          * Get the tags relationship.
@@ -27,7 +27,7 @@ class Post extends Model
          */
         public function tags()
         {
-            return $this->belongsToMany(config('aggregator.namespace').'PostTag','post_tag','post_id','tag_id')->withTimestamps();
+            return $this->belongsToMany(config('aggregator.namespace').'Tag','post_tag','post_id','tag_id')->withTimestamps();
         }
         /**
          * Sync tag relationships and add new tags as needed.
