@@ -53,7 +53,7 @@
                                 @endforeach
                                 <i class="fa fa-newspaper-o"></i> <a href="#">{{$post->category->category}}</a>
                             </p>
-                            <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{asset(isset($post->photo->file))}}" alt="">
+                            <img class="" style="max-width: 400px;height: auto;width:100%;margin:30px 0;" src="{!! $post->featured_image ? asset($post->featured_image)  : asset('assets/images/avatar2.png') !!}" alt="">
 
                             <div class="blog-content">
                                 <?php print_r($post->body);?>

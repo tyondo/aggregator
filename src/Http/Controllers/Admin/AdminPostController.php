@@ -63,30 +63,6 @@ class AdminPostController extends Controller
         if(Auth::user()->can('store.posts')){
 
         }
-        $postData=[];
-        //add validation
-        $user = Auth::user();
-        if($request->file('featured_image_id')){
-           // $input = $request->all();
-           // return 'there is a file';
-            $file = $request->file('featured_image_id');
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo = Photo::create(['file'=> $name]);
-            $postData['featured_image_id'] = $photo->id;
-        }
-        if ($file = $request->input('featured_image_id')){
-            //$input = $request->all();
-            $photo = Photo::create(['file'=> $request->input('featured_image_id')]);
-            $postData['featured_image_id'] = $photo->id;
-        }
-        if ($request->input('post_type')){
-            $postData['post_type'] = $request->input('post_type');
-        }
-        if ($request->input('featured_content')){
-            $postData['featured_content'] = $request->input('featured_content');
-        }
-
         $postData = [
             'user_id' => Auth::user()->id,
             'category_id' => $request->input('category_id'),
@@ -95,7 +71,34 @@ class AdminPostController extends Controller
             'summary' => $request->input('summary'),
             'body' => $request->input('body'),
             'post_status' => $request->input('post_status'),
+            'featured_image' => $request->input('featured_image'),
         ];
+        //add validation
+       /* if($request->file('featured_image_id')){
+           // $input = $request->all();
+           // return 'there is a file';
+            $file = $request->file('featured_image_id');
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=> $name]);
+            $postData['featured_image_id'] = $photo->id;
+        }
+
+        if ($file = $request->input('featured_image_id')){
+            //$input = $request->all();
+            $photo = Photo::create(['file'=> $request->input('featured_image_id')]);
+            $postData['featured_image_id'] = $photo->id;
+        }*/
+
+        if ($request->input('post_type')){
+            $postData['post_type'] = $request->input('post_type');
+        }
+        if ($request->input('featured_content')){
+            $postData['featured_content'] = $request->input('featured_content');
+        }
+
+
+       // return $postData;
         //return $request->get('tags', []);
        $post = Post::create($postData);
        $post->syncTags($request->get('tags', []));
@@ -121,11 +124,6 @@ class AdminPostController extends Controller
 
         }
         $post = Post::findOrFail($id);
-        //return $post->category;
-        //return $post->tags->pluck('id','tag');
-        /*foreach ($post->tags->toArray() as $tag){
-            return $tag['id'];
-        }*/
         return view('aggregator::portal.admin.blog.posts.show', compact('post'));
         /*
          * id
@@ -149,7 +147,6 @@ class AdminPostController extends Controller
          * tags()
          * syncTags(array)
          * user()
-         * photo()
          * How to access each tag
          * @foreach($post->tags->toArray() as $tag )
             <a href="{{$tag['id']}}">{{$tag['title']}}</a>
@@ -194,18 +191,24 @@ class AdminPostController extends Controller
         }
 
         $input = $request->all();
+        //return $input;
         $post = Post::find($id);
+        if($post->title != $input['title']){
+            $post->title = $input['title'];
+            $post->slug = str_slug($request->input('title')) .'-'.time();
+        }
         $post->category_id = $input['category_id'];
         $post->post_status = $input['post_status'];
-            if($post->title != $input['title']){
-                $post->title = $input['title'];
-                $post->slug = str_slug($request->input('title')) .'-'.time();
-            }
+        $post->featured_content = $input['featured_content'];
+        $post->post_type = $input['post_type'];
+        $post->featured_image = $input['featured_image'];
+        $post->summary = $input['summary'];
         $post->body = $input['body'];
         $post->save();
         $post->syncTags($request->get('tags', []));
 
       return redirect(route('admin.posts.manage'));
+
     }
 
     /**

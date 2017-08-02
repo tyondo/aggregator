@@ -48,7 +48,7 @@
                         @foreach($posts as $post)
                             <tr>
                                 <td>{{$post->id}}</td>
-                                <td><img height="50px" src="{!! $post->photo ? asset($post->photo->file)  : asset('assets/images/avatar2.png') !!}" alt=""></td>
+                                <td><img height="50px" src="{!! $post->featured_image ? asset($post->featured_image)  : asset('assets/images/avatar2.png') !!}" alt=""></td>
                                 <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
                                 <td>{{$post->user->name}}</td>
                                 <td>{{ $post->category ? $post->category->name  : 'Uncategorized' }}</td>

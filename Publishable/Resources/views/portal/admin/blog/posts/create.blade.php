@@ -87,14 +87,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="field-1">Featured Content</label>
+                        <label class="form-label" for="field-2">Featured Content</label>
                         <div class="input-group">
                       <span class="input-group-btn">
-                        <a data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                        <a data-input="thumbnails" data-preview="holders" class="btn btn-primary">
                           <i class="fa fa-file-video-o"></i> Choose
                         </a>
                       </span>
-                            <input id="thumbnail" class="form-control" type="text" name="featured_content">
+                            <input id="thumbnails" class="form-control" type="text" name="featured_content">
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,7 +105,7 @@
                           <i class="fa fa-picture-o"></i> Choose
                         </a>
                       </span>
-                            <input id="thumbnail" class="form-control" type="text" name="featured_image_id">
+                            <input id="thumbnail" class="form-control" type="text" name="featured_image">
                         </div>
                         <img id="holder" style="margin-top:15px;max-height:100px;">
                     </div>

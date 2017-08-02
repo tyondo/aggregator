@@ -62,13 +62,16 @@
                                 <p class="blog_info">
                                     <i class="fa fa-comment"></i> <a href="#comments">3 comments</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-tags"></i> <a href="#">responsive</a> <a href="#">web</a> <a href="#">mobile</a>
+                                    <i class="fa fa-tags"></i>
+                                    @foreach($post->tags->toArray() as $tag )
+                                        <a href="#">{{$tag['title']}}</a>
+                                    @endforeach
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-newspaper-o"></i>
                                     <a href="#">{{$post->category->name}}</a>
                                     <a href="#">web</a>
                                 </p>
-                                <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{--asset($post->photo->file)--}}" alt="">
+                                <img class="" style="max-width: 200px;height: auto;width:100%;margin:30px 0;" src="{{asset($post->featured_image)}}" alt="">
                                 <p class="blog-content">
                                     {!! str_limit(strip_tags($post->body), 200) !!}
                                 </p>

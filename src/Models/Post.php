@@ -12,10 +12,6 @@ class Post extends Model
 		{
 			return $this->belongsTo(config('aggregator.namespace').'User');
 		}
-		public function photo()
-		{
-			return $this->hasOne(config('aggregator.namespace').'Photo','id','featured_image_id');
-		}
 		public function category()
 		{
 			return $this->hasOne(config('aggregator.namespace').'Category','id','category_id');

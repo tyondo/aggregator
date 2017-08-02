@@ -56,6 +56,7 @@ class AdminPostMetadataController extends Controller
                     'category' => str_slug($request->input('title')),
                     'meta_description' => $request->input('description')
                 ];
+                //return $metaData;
                 Category::create($metaData);
                 Session::flash('message', 'New Category created');
                 return redirect()->route('admin.categories.index');
