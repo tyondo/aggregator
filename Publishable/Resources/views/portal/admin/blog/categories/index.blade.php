@@ -62,19 +62,19 @@
               </div>
               {!! Form::close() !!}
           </div>
-             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+             <div class="col-sm-4">
                  <br />
                   <div class="panel panel-default">
                       <div class="panel-body">
                           <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <h3 class="text-center">Metadata</h3>
+                                  <h3 class="text-center">Categories</h3>
                                   <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
                                       <thead>
                                       <tr>
-                                          <th>ID</th>
-                                          <th>Category Name</th>
-                                          <th>Description</th>
+                                          <th>Action</th>
+                                          <th>Category</th>
+                                          <th>Count</th>
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -82,8 +82,41 @@
                                           @foreach($categories as $category)
                                               <tr>
                                                   <td>{{$category->id}}</td>
-                                                  <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->name}}</a></td>
-                                                  <td>{{$category->description}}</td>
+                                                  <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->title}}</a></td>
+                                                  <td></td>
+                                              </tr>
+                                          @endforeach
+                                      @endif
+                                      </tbody>
+                                  </table>
+                                  <!-- ********************************************** -->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <div class="col-sm-4">
+                 <br />
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                          <div class="row">
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                  <h3 class="text-center">Tags</h3>
+                                  <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                                      <thead>
+                                      <tr>
+                                          <th>Action</th>
+                                          <th>Tag</th>
+                                          <th>Count</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      @if(isset($tags))
+                                          @foreach($tags as $tag)
+                                              <tr>
+                                                  <td>{{$tag->id}}</td>
+                                                  <td><a href="{{route('admin.categories.edit', $tag->id)}}">{{$tag->title}}</a></td>
+                                                  <td></td>
                                               </tr>
                                           @endforeach
                                       @endif
