@@ -26,7 +26,7 @@ class CreatePostsTable extends Migration
             $table->string('featured_content')->nullable();
             $table->boolean('is_published')->default(false);
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('post_status')->index()->default(1);
+            $table->string('post_status')->default('published');
             $table->integer('category_id')->unsigned()->index()->default(1);
             //$table->integer('featured_image_id')->unsigned()->index()->default(1);
 

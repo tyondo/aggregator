@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>
                             <span class="desc"></span>
-                            {{Form::select('post_status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                            {{Form::select('post_status', ['draft' => 'Draft', 'published' => 'Published', 'review'=>'Review', 'inactive'=>'Inactive'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Tags</label>
