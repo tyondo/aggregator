@@ -20,9 +20,9 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->can('access.all.posts')){
+        /*if(Auth::user()->can('access.all.posts')){
 
-        }
+        }*/
         //$posts = Post::paginate(2);
         $posts = Post::all();
         //return $posts->photo->file;
@@ -30,9 +30,9 @@ class AdminPostController extends Controller
     }
     public function managePosts()
     {
-        if(Auth::user()->can('manage.posts')){
+        /*if(Auth::user()->can('manage.posts')){
 
-        }
+        }*/
         $posts = Post::all();
         return view('aggregator::portal.admin.blog.posts.manage', compact('posts'));
     }
@@ -44,9 +44,9 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->can('create.posts')){
+        /*if(Auth::user()->can('create.posts')){
 
-        }
+        }*/
         $categories = Category::pluck('category', 'id')->all();
         $tags = Tag::pluck('tag')->all();
         return view('aggregator::portal.admin.blog.posts.create', compact('categories','tags'));
@@ -60,9 +60,9 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->can('store.posts')){
+        /*if(Auth::user()->can('store.posts')){
 
-        }
+        }*/
         $postData = [
             'user_id' => Auth::user()->id,
             'category_id' => $request->input('category_id'),
@@ -74,21 +74,6 @@ class AdminPostController extends Controller
             'featured_image' => $request->input('featured_image'),
         ];
         //add validation
-       /* if($request->file('featured_image_id')){
-           // $input = $request->all();
-           // return 'there is a file';
-            $file = $request->file('featured_image_id');
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo = Photo::create(['file'=> $name]);
-            $postData['featured_image_id'] = $photo->id;
-        }
-
-        if ($file = $request->input('featured_image_id')){
-            //$input = $request->all();
-            $photo = Photo::create(['file'=> $request->input('featured_image_id')]);
-            $postData['featured_image_id'] = $photo->id;
-        }*/
 
         if ($request->input('post_type')){
             $postData['post_type'] = $request->input('post_type');
@@ -120,48 +105,11 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()->can('access.single.posts')){
+        /*if(Auth::user()->can('access.single.posts')){
 
-        }
+        }*/
         $post = Post::findOrFail($id);
         return view('aggregator::portal.admin.blog.posts.show', compact('post'));
-        /*
-         * id
-         * title
-         * slug
-         * subtitle
-         * body
-         * summary
-         * meta_description
-         * post_type
-         * featured_content
-         * is_published
-         * user_id
-         * post_status
-         * category_id
-         * featured_image_id
-         * key_words
-         * created_at
-         * updated_at
-         * category()
-         * tags()
-         * syncTags(array)
-         * user()
-         *
-         * How to access post author
-         * {{ucfirst($post->user->name)}}
-         *
-         * How to access each tag
-         * @foreach($post->tags->toArray() as $tag )
-            <a href="{{$tag['id']}}">{{$tag['title']}}</a>
-           @endforeach
-         *How to access post category
-         * $post->category->category
-         * How to access post created time in human language
-         * $post->created_at->diffForHumans()
-         * How to access post featured image
-         * $post->photo->file
-         * */
     }
 
     /**
@@ -172,9 +120,9 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()->can('edit.posts')){
+        /*if(Auth::user()->can('edit.posts')){
 
-        }
+        }*/
         $post = Post::findOrFail($id);
         $categories = Category::pluck('category', 'id')->all();
         $tags = Tag::pluck('tag')->all();
@@ -190,9 +138,9 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->can('update.posts')){
+        /*if(Auth::user()->can('update.posts')){
 
-        }
+        }*/
 
         $input = $request->all();
         //return $input;
@@ -223,9 +171,9 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->can('destroy.posts')){
+        /*if(Auth::user()->can('destroy.posts')){
 
-        }
+        }*/
         $post = Post::findOrFail($id);
         $post->tags()->detach();
         unlink(public_path($post->photo->file));
