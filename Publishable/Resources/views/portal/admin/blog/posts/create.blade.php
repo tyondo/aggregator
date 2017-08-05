@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Type</label>
                         <span class="desc"></span>
-                        {{Form::select('post_type', ['text' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
+                        {{Form::select('post_type', ['standard' => 'Standard', 'video' => 'Video','audio'=>'Audio'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="field-5">{{config('aggregator.purpose')}} Status</label>

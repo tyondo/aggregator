@@ -10,6 +10,6 @@ class Category extends Model
 
     public function posts()
     {
-        return $this->belongsTo(config('aggregator.namespace').'Post','category_id');
+        return $this->belongsToMany(config('aggregator.namespace').'Post','category_id');
     }
 }

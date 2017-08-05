@@ -21,15 +21,14 @@ class CreatePostsTable extends Migration
             $table->longText('body');
             $table->text('summary')->nullable();
             $table->string('meta_description')->nullable();
-            $table->string('post_type')->default('text');
+            $table->string('post_type')->default('standard');
             $table->string('featured_image')->nullable();
             $table->string('featured_content')->nullable();
             $table->boolean('is_published')->default(false);
             $table->integer('user_id')->unsigned()->index();
             $table->string('post_status')->default('published');
             $table->integer('category_id')->unsigned()->index()->default(1);
-            //$table->integer('featured_image_id')->unsigned()->index()->default(1);
-
+            $table->integer('view_count')->unsigned()->index()->default(0);
            // $table->integer('tag_id')->unsigned()->index()->default(1);
             $table->string('key_words')->nullable();
             $table->timestamps();

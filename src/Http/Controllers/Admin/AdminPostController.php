@@ -147,6 +147,10 @@ class AdminPostController extends Controller
          * tags()
          * syncTags(array)
          * user()
+         *
+         * How to access post author
+         * {{ucfirst($post->user->name)}}
+         *
          * How to access each tag
          * @foreach($post->tags->toArray() as $tag )
             <a href="{{$tag['id']}}">{{$tag['title']}}</a>

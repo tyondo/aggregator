@@ -2,6 +2,7 @@
 
 namespace Tyondo\Aggregator;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Tyondo\Aggregator\Commands\Install;
 use Illuminate\Foundation\AliasLoader;
