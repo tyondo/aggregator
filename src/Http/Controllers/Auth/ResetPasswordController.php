@@ -25,7 +25,10 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
+    public function redirectTo(){
+        return route(config('aggregator.routes.auth.login'));
+    }
 
     /**
      * Create a new controller instance.

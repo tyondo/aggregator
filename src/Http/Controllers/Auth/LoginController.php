@@ -45,7 +45,7 @@ class LoginController extends Controller
      * @return  string
      */
     public function redirectTo(){
-        return route('admin.posts.index');
+        return route(config('aggregator.routes.auth.login'));
     }
     /**
      * Log the user out of the application.

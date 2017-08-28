@@ -93,6 +93,15 @@ return [
             'edit'      => 'aggregator::authenticator.edit',
             'role'      => 'aggregator::authenticator.role'
         ],
+    ],
+
+    'routes' =>[
+        'auth' => [
+            'login' => 'admin.posts.index'
+        ],
+        'pages' => [
+            'home' => 'admin.posts.index'
+        ]
     ]
 
 ];
