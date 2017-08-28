@@ -25,7 +25,11 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/custom/css/custom.min.css')}}" rel="stylesheet">
   </head>
-  @if(\Request::is('auth') ||\Request::is('auth/register') || \Request::is('client/login') || \Request::is('auth/password/request') || \Request::is('auth/password/reset'))
+  @if(
+        \Request::is(ltrim(route('login.form', array(), false), '/')) ||
+        \Request::is(ltrim(route('password.request.form', array(), false), '/'))||
+        \Request::is(ltrim(route('password.reset.form', array(), false), '/'))||
+        \Request::is(ltrim(route('register.form', array(), false), '/')))
     <body class="login">
     @yield('content')
     </body>
@@ -47,7 +51,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{ Auth::user()->name }}</h2>
+                <h2>{{ isset(Auth::user()->name)?Auth::user()->name : '' }}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
