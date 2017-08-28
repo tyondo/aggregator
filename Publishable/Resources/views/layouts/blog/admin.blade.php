@@ -25,7 +25,11 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('vendor/tyondo/aggregator/blog/admin/vendor/custom/css/custom.min.css')}}" rel="stylesheet">
   </head>
-
+  @if(\Request::is('auth') ||\Request::is('auth/register') || \Request::is('client/login') || \Request::is('auth/password/request') || \Request::is('auth/password/reset'))
+    <body class="login">
+    @yield('content')
+    </body>
+  @else
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -83,11 +87,11 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ url('/logout') }}"
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout.post') }}"
                 onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                   <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                   <form id="logout-form" action="{{ route('logout.post') }}" method="POST" style="display: none;">
                        {{ csrf_field() }}
                    </form>
               </a>
@@ -116,12 +120,12 @@
                       Change Password</a></li>
                     {{--<li><a href="javascript:;">Help</a></li>--}}
                     <li>
-                      <a href="{{ url('/logout') }}"
+                      <a href="{{ route('logout.post') }}"
                           onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
                                    <i class="fa fa-sign-out pull-right"></i>Logout
                       </a>
-                      <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                      <form id="logout-form" action="{{ route('logout.post') }}" method="POST" style="display: none;">
                           {{ csrf_field() }}
                       </form>
                     </li>
@@ -132,7 +136,6 @@
           </div>
         </div>
         <!-- /top navigation -->
-
         <!-- page content -->
         @yield('content')
         <!-- /page content -->
@@ -219,4 +222,5 @@
         @include('aggregator::shared.GoogleAnalytics')
     @endif
   </body>
+    @endif
 </html>

@@ -32,46 +32,46 @@ return [
     */
     'navigation' => [
 
+        [
+            'group' => 'Posts',
+            'class' => 'fa fa-book fa-lg',
+            'links' => [
                 [
-                    'group' => 'Posts',
-                    'class' => 'fa fa-book fa-lg',
-                    'links' => [
-                        [
-                            'title' => 'Add Post',
-                            'class' => 'fa fa-fw fa-plus',
-                            'route' => 'admin.posts.create'
-                        ],
-                        [
-                            'title' => 'Manage Posts',
-                            'class' => 'fa fa-newspaper-o',
-                            'route' => 'admin.posts.manage'
-                        ],
-                        [
-                            'title' => 'List Posts',
-                            'class' => 'fa fa-fw fa-th-list',
-                            'route' => 'admin.posts.index'
-                        ],
-                    ]
+                    'title' => 'Add Post',
+                    'class' => 'fa fa-fw fa-plus',
+                    'route' => 'admin.posts.create'
                 ],
-
                 [
-                    'group' => 'Categories',
-                    'class' => 'fa fa-cubes fa-lg',
-                    'links' => [
-                        [
-                            'title' => 'Add Category',
-                            'class' => 'fa fa-fw fa-plus',
-                            'route' => 'admin.categories.create'
-                        ],
-                        [
-                            'title' => 'List Category',
-                            'class' => 'fa fa-fw fa-th-list',
-                            'route' => 'admin.categories.index'
-                        ],
-
-                    ]
+                    'title' => 'Manage Posts',
+                    'class' => 'fa fa-newspaper-o',
+                    'route' => 'admin.posts.manage'
                 ],
+                [
+                    'title' => 'List Posts',
+                    'class' => 'fa fa-fw fa-th-list',
+                    'route' => 'admin.posts.index'
+                ],
+            ]
         ],
+
+        [
+            'group' => 'Categories',
+            'class' => 'fa fa-cubes fa-lg',
+            'links' => [
+                [
+                    'title' => 'Add Category',
+                    'class' => 'fa fa-fw fa-plus',
+                    'route' => 'admin.categories.create'
+                ],
+                [
+                    'title' => 'List Category',
+                    'class' => 'fa fa-fw fa-th-list',
+                    'route' => 'admin.categories.index'
+                ],
+
+            ]
+        ],
+    ],
     /*
 |--------------------------------------------------------------------------
 | Aggregator Views
@@ -85,6 +85,13 @@ return [
         'layouts' => [
             'admin'        => 'aggregator::layouts.blog.admin',
             //'admin' => 'mnara::admin.layouts.app',
+        ],
+        'auth' => [
+            'login'     => 'aggregator::auth.login',
+            'register'  => 'aggregator::auth.register',
+            'email-request'      => 'aggregator::auth.password',
+            'edit'      => 'aggregator::authenticator.edit',
+            'role'      => 'aggregator::authenticator.role'
         ],
     ]
 
