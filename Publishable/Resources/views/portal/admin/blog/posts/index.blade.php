@@ -61,7 +61,7 @@
 
                                 <div class="post">
                                     <h1><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a> </h1>
-                                    <p>{!! str_limit(strip_tags($post->body), 200) !!}.</p>
+                                    <p>{!! str_limit(strip_tags(isset($post->summary)?$post->summary:$post->body), 200) !!}.</p>
                                     <div>
                                         <span class="badge">Posted {{$post->created_at->diffForHumans()}}</span>
                                         <div class="pull-right">
