@@ -59,3 +59,8 @@ Route::group(['prefix'=>''], function(){
     Route::post('auth/password/reset',$namespaceController.'ResetPasswordController@reset')->name('password.reset');
     Route::get('auth/password/reset',$namespaceController.'ResetPasswordController@showResetForm')->name('password.reset.form');
 });
+
+
+Route::post('/admin/users/sendResetRequest', $namespacePrefix.'Admin\UserController@sendResetLinkEmail')->name('user.password.request.post');
+Route::patch('/admin/users/changePassword/{user}', $namespacePrefix.'Admin\UserController@changePassword');
+Route::resource('admin/users', $namespacePrefix.'Admin\UserController');

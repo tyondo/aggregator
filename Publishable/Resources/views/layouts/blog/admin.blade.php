@@ -76,6 +76,15 @@
                       {{--<li><a href="{{route('admin.categories.create')}}">Add Metadata</a></li>--}}
                     </ul>
                   </li>
+                  @if(config('aggregator.control_panel.manage_users'))
+                  <li><a><i class="fa fa-user"></i> Authorization<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('users.index')}}">Users</a></li>
+                      <li><a href="{{route('users.create')}}">Create User</a></li>
+                      {{--<li><a href="{{route('admin.categories.create')}}">Add Metadata</a></li>--}}
+                    </ul>
+                  </li>
+                  @endif
                 </ul>
               </div>
             </div>

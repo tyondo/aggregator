@@ -2,6 +2,8 @@
 
 namespace Tyondo\Aggregator\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Tyondo\Aggregator\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
@@ -38,4 +40,15 @@ class ForgotPasswordController extends Controller
     {
         return view(config('aggregator.views.auth.email-request'));
     }
+
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    //protected $redirectTo = '/';
+    public function redirectTo(){
+        return route(config('aggregator.routes.auth.login'));
+    }
+
 }

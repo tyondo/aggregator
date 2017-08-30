@@ -20,6 +20,11 @@ return [
     */
     'purpose'=>'Posts',
 
+    //Delegate some administration aspects to Aggregator
+    'control_panel' => [
+        'manage_users' => true,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Tyondo Aggregator Navigation Menu
