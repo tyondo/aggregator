@@ -8,6 +8,7 @@ use Tyondo\Aggregator\Http\Requests\UserRequest;
 use Tyondo\Aggregator\Http\Requests\UserRequestUpdate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Tyondo\Aggregator\Models\User;
 use Tyondo\Aggregator\Models\Role;
