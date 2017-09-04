@@ -66,8 +66,8 @@ class UserController extends Controller
     {
 
         $input = $request->all();
-          $password = $this->randomPassword();
-        $input['password'] = bcrypt($password );
+          //$password = $this->randomPassword();
+        $input['password'] = bcrypt($request->input('password') );
         User::create($input);
         Session::flash('message', 'The user has been CREATED !!');
        return redirect(route('users.index'));

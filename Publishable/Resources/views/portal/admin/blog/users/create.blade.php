@@ -49,6 +49,25 @@
                   {{ Form::email('email', null, ['required'=> 'required', 'class' => 'form-control col-md-7 col-xs-12']) }}
                 </div>
               </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  {{ Form::text('password', null, ['required'=> 'required', 'class' => 'form-control col-md-7 col-xs-12']) }}
+                </div>
+                @if ($errors->has('password'))
+                  <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Confirm Password <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  {{ Form::text('password_confirmation', null, ['required'=> 'required', 'class' => 'form-control col-md-7 col-xs-12']) }}
+                </div>
+            </div>
              {{-- <div class="form-group">
                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Role</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
