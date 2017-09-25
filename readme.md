@@ -104,9 +104,19 @@ When you retrieve a given post you will have access to the following parameters 
 ````{{ $post->created_at->format('d')}}````
 7. How to access month when post was created
 ````{{$post->created_at->format('M')}}````
-8. How to access post tags
+8. How to access post featured image
+````{{$post->featured_image}}````
+9. How to add post links ````{{route('your.post.route', $post->slug)}}````
+10. How to list tags ````@if(isset($tags))
+     @foreach($tags as $tag)
+         <li><a href="{{route('your.tag.route', $tag->tag)}}">{{$tag->title}}</a></li>
+     @endforeach
+ @endif ````
+11. How to list categories ```` ````
+0. How to access post tags
  ```` @foreach($post->tags->toArray() as $tag )
    <a href="{{$tag['id']}}">{{$tag['title']}}</a>
   @endforeach 
-  ````                
+  ````          
+
 

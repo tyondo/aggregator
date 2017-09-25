@@ -56,7 +56,7 @@ Route::group(['prefix'=>''], function(){
     Route::get('auth/register',$namespaceController.'RegisterController@showRegistrationForm')->name('register.form');
     Route::post('auth/password/request',$namespaceController.'ForgotPasswordController@sendResetLinkEmail')->name('password.request.post');
     Route::get('auth/password/request',$namespaceController.'ForgotPasswordController@showLinkRequestForm')->name('password.request.form');
-    Route::post('auth/password/reset',$namespaceController.'ResetPasswordController@reset')->name('password.reset');
+    Route::post('auth/password/reset',$namespaceController.'ResetPasswordController@reset')->name('password.reset.post');
     Route::get('auth/password/reset',$namespaceController.'ResetPasswordController@showResetForm')->name('password.reset.form');
 });
 

@@ -19,6 +19,7 @@ return [
     |
     */
     'purpose'=>'Posts',
+    'use_company' => true,
 
     //Delegate some administration aspects to Aggregator
     'control_panel' => [

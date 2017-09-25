@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <a href="{{url('admin/users/create')}}" class="btn btn-success">Create User</a>
+        <a href="{{route('users.create')}}" class="btn btn-success">Create User</a>
       </div>
     </div>
 

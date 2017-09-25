@@ -85,6 +85,19 @@
                     </ul>
                   </li>
                   @endif
+                  @if(config('aggregator.use_company'))
+                    @if(Auth::check())
+                      <div class="menu_section">
+                        @if(config('musoni-website-v5.navigation'))
+                          {{--menu for the tyondo blog package -Aggregator ---}}
+                          <h3>Company</h3>
+                          <ul class="nav side-menu">
+                            {!! GenerateMenu::generateMenu(config('musoni-website-v5.navigation')) !!}
+                          </ul>
+                        @endif
+                      </div>
+                    @endif
+                  @endif
                 </ul>
               </div>
             </div>
@@ -124,7 +137,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('vendor/tyondo/aggregator/images/user.png')}}" alt="">{{ Auth::user()->name }}
+                    <img src="{{asset('vendor/tyondo/aggregator/images/user.png')}}" alt="">{{ isset(Auth::user()->name)?Auth::user()->name :'' }}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
