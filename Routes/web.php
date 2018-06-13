@@ -44,7 +44,7 @@ Route::resource('admin/categories', $namespacePrefix.'Admin\AdminPostMetadataCon
     ]
 ]);
 
-
+/*
 Route::group(['prefix'=>''], function(){
     //event('mnara.routing', app('router'));
     $namespaceController = '\\'.'Tyondo\\Aggregator\\Http\\Controllers\\Auth'.'\\';
@@ -58,7 +58,7 @@ Route::group(['prefix'=>''], function(){
     Route::get('auth/password/request',$namespaceController.'ForgotPasswordController@showLinkRequestForm')->name('password.request.form');
     Route::post('auth/password/reset',$namespaceController.'ResetPasswordController@reset')->name('password.reset.post');
     Route::get('auth/password/reset',$namespaceController.'ResetPasswordController@showResetForm')->name('password.reset.form');
-});
+});*/
 
 
 Route::post('/admin/users/sendResetRequest', $namespacePrefix.'Admin\UserController@sendResetLinkEmail')->name('user.password.request.post');
