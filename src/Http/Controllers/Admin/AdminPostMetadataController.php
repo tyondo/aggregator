@@ -18,9 +18,9 @@ class AdminPostMetadataController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->can('access.categories')){
+        /*if(Auth::user()->can('access.categories')){
 
-        }
+        }*/
         $categories = Category::all();
         $tags = Tag::all();
       return view('aggregator::portal.admin.blog.categories.index', compact('categories','tags'));
